@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "musiccollaborativefiltering"
+version = "0.1.0"
+description = ""
+authors = ["Valerio Velardo <velardovalerio@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "1.5.2"
+implicit = "0.6.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
