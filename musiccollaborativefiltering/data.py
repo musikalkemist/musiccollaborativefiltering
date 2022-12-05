@@ -15,9 +15,13 @@ def load_user_artists(user_artists_file: Path) -> scipy.sparse.csr_matrix:
     user_artists = pd.read_csv(user_artists_file, sep="\t")
     user_artists.set_index(["userID", "artistID"], inplace=True)
     coo = scipy.sparse.coo_matrix(
-        (user_artists.weight.astype(float),
-        (user_artists.index.get_level_values(0),
-         user_artists.index.get_level_values(1)))
+        (
+            user_artists.weight.astype(float),
+            (
+                user_artists.index.get_level_values(0),
+                user_artists.index.get_level_values(1),
+            ),
+        )
     )
     return coo.tocsr()
 
@@ -42,8 +46,10 @@ class ArtistRetriever:
 
 
 if __name__ == "__main__":
-    user_artists_matrix = load_user_artists(Path("../lastfmdata/user_artists.dat"))
-    print(user_artists_matrix)
+    # user_artists_matrix = load_user_artists(
+    #     Path("../lastfmdata/user_artists.dat")
+    # )
+    # print(user_artists_matrix)
 
     artist_retriever = ArtistRetriever()
     artist_retriever.load_artists(Path("../lastfmdata/artists.dat"))

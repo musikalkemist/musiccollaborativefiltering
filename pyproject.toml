@@ -9,7 +9,16 @@ readme = "README.md"
 python = "^3.8"
 pandas = "1.5.2"
 implicit = "0.6.1"
+black = "^22.1.0"
 
+[tool.black]
+line-length = 79
+exclude = '''
+/(
+	\.git
+| _build
+)/
+'''
 
 [build-system]
 requires = ["poetry-core"]
